@@ -1,0 +1,87 @@
+﻿<Window x:Class="JsonBuilder.AddOrEditData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JsonBuilder"
+        mc:Ignorable="d"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+        Title="AddOrEditData" Height="300" Width="650">
+    <Window.Resources>
+        <SolidColorBrush Color="#FFBA8BCD" x:Key="buttonBrush" />
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF3C1254" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" ></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Text="ФИО:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,5,0,0" TextWrapping="Wrap" Height="20" Width="37" Foreground="#FFF9F5F5"/>
+            <TextBox Grid.Row="0" Name="txtFIO" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,25,0,0" TextWrapping="Wrap" Height="25" Width="170">
+                <TextBox.Background>
+                    <DynamicResource ResourceKey="buttonBrush" />
+                </TextBox.Background>
+            </TextBox>
+            <Label Grid.Row="0" Content="Пол:" Margin="20,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="40" Foreground="#FFF9F5F5"/>
+            <StackPanel Grid.Row="0" Name="stackPanel" Width="100" Height="30"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,75,0,0">
+                <RadioButton Background="#FFBA8BCD" Foreground="#FFF9F5F5" GroupName="Male" Name="rbtnMan" Content="Мужской" Checked="RadioButtonMan_Checked"/>
+                <RadioButton Background="#FFBA8BCD" Foreground="#FFF9F5F5" GroupName="Male" Name="rbtnWoman" Content="Женский" Checked="RadioButtonWoman_Checked"/>
+            </StackPanel>
+            <Label Grid.Row="0" Content="Кол-во детей:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Height="25" Foreground="#FFF9F5F5" Margin="95,50,0,0"/>
+            <TextBox Grid.Row="0" Background="#FFBA8BCD" Name="txtCntChild" Height="25" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,80,0,0" LostFocus="txtCntChild_LostFocus"/>
+            <Label Grid.Row="0" Name="lbError" Content="Неверно!" Foreground="Red" Height="25" Width="70" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="60,100,0,0" Visibility="Hidden"/>
+            <Label Grid.Row="0" Content="Семейное положение:" Width="140" Height="25"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,110,0,0" Foreground="#FFF9F5F5"/>
+            <ComboBox Grid.Row="0" Name="cmbBox1" Width="140" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,135,0,0">
+            </ComboBox>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="20,5,0,0" Height="20" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Дата рождения:" Foreground="#FFF9F5F5"/>
+            <Calendar Grid.Row="0" Background="#FFBA8BCD" Grid.Column="1" Name="calendar1" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Height="150" IsTodayHighlighted="False" SelectedDatesChanged="calendar1_SelectedDatesChanged"/>
+            <Label Grid.Column="2" Content="Список номеров карточек:" Foreground="White" Width="160" Height="25" VerticalAlignment="Top" Margin="0,0,30,0"/>
+            <ListView Grid.Column="2" Name="listCardAdd" Width="180" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,25,0,0" Background="Black" Foreground="White" SelectionChanged="listCardAdd_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=ConvertNumberCard}" Width="130">Номера карточек</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=CardExpirationDate}">Срок окончания действия</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <xctk:MaskedTextBox Grid.Column="2" Mask="0000 0000 0000 0000" Name="txtInputCard" Height="20" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,110,0,0" Background="#FFBA8BCD" LostFocus="txtInputCard_LostFocus"/>
+            <Label Grid.Column="2" Content="Введите номер карты:" Name="txblInputCard" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="150" Margin="20,85,0,0" Foreground="White"/>
+            <Label Grid.Column="2" Name="lbErrorCard" Content="Неверный ввод карты!" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="150" Margin="20,125,0,0" Visibility="Hidden"/>
+            <Label Grid.Column="2" Content="Срок окончания действия:" Name="lblEndDate" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="160" Margin="20,140,0,0" Foreground="White"/>
+            <xctk:MaskedTextBox Grid.Column="2" Mask="00\/00" Name="txtInputDateCard" Height="20" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,165,0,0" Background="#FFBA8BCD" LostFocus="txtInputDateCard_LostFocus"/>
+            <Label Grid.Column="2" Name="lbErrorDate" Content="Неверный ввод даты!" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="150" Margin="15,180,0,0" Visibility="Hidden"/>
+            <Button Grid.Column="2" Name="btnCardAddOrEdit" Content="Добавить" Height="25" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,205,0,0" Click="btnCardAddOrEdit_Click">
+                <Button.Background>
+                    <DynamicResource ResourceKey="buttonBrush" />
+                </Button.Background>
+            </Button>
+            <Button Grid.Column="2" Name="btnCardDelete" Content="Удалить" Height="25" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,205,0,0" Click="btnCardDelete_Click">
+                <Button.Background>
+                    <DynamicResource ResourceKey="buttonBrush" />
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Button Name="btnSave" Content="Сохранить" Grid.Row="1" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,0,0,0" Click="ButtonSave_Click">
+            <Button.Background>
+                <DynamicResource ResourceKey="buttonBrush" />
+            </Button.Background>
+        </Button>
+        <Button Name="btnCancel" Content="Отмена" Grid.Row="1" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,180,0" Click="ButtonCancel_Click">
+            <Button.Background>
+                <DynamicResource ResourceKey="buttonBrush" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

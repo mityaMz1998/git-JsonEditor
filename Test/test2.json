@@ -1,0 +1,19 @@
+[
+  {
+    "ID": 1,
+    "FIO": "Иванов Иван Иванович",
+    "DateOfBirth": "2022-01-06T00:00:00",
+    "Male": true,
+    "MaritalStatus": "Женат",
+    "CountOfChildren": 1,
+    "ConvertMale": "М",
+    "ConvertCountOfChildren": "1",
+    "ListCard": [
+      {
+        "NumberCard": 131740131903190,
+        "CardExpirationDate": "09/22",
+        "ConvertNumberCard": "0131 7401 3190 3190"
+      }
+    ]
+  }
+]

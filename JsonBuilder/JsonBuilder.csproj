@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WindowsFormsApp2">
+      <HintPath>D:\C#\Проекты С#\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
