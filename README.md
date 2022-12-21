@@ -1,1 +1,1 @@
-Программа предназначена для чтения и записи файлов в формате Json.
+The program is designed to read and write files in Json format.
