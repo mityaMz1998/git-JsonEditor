@@ -18,13 +18,13 @@ namespace JsonBuilder
         public int? CountOfChildren { get; set; }
         public string ConvertMale 
         {
-            get { return Male ? "М" : "Ж";}
+            get { return Male ? "M" : "F";}
         }
         public string ConvertCountOfChildren 
         { 
             get 
             { 
-                return CountOfChildren == null ? "Неизвестно" : CountOfChildren.ToString(); 
+                return CountOfChildren == null ? "Is unknown" : CountOfChildren.ToString(); 
             }
         }
         public List<Card> ListCard { get; set; }
