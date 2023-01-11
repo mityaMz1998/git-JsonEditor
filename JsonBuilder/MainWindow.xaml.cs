@@ -89,8 +89,8 @@ namespace JsonBuilder
         {
             if (personList1.Items.Count != 0)
             {
-                var res = MessageBox.Show("Вы действительно хотите удалить этот объект?", 
-                                          "Удалить обект", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var res = MessageBox.Show("Do you really want to delete this person?", 
+                                          "Delete object", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 
                 if (res == MessageBoxResult.Yes)
                 {                    
