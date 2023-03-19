@@ -6,13 +6,30 @@
     "Male": true,
     "MaritalStatus": "Женат",
     "CountOfChildren": 1,
-    "ConvertMale": "М",
+    "ConvertMale": "M",
     "ConvertCountOfChildren": "1",
     "ListCard": [
       {
         "NumberCard": 131740131903190,
         "CardExpirationDate": "09/22",
         "ConvertNumberCard": "0131 7401 3190 3190"
+      }
+    ]
+  },
+  {
+    "ID": 2,
+    "FIO": "Sergeev Sergei Sergeevich",
+    "DateOfBirth": "2023-03-15T00:00:00",
+    "Male": true,
+    "MaritalStatus": "Married",
+    "CountOfChildren": 1,
+    "ConvertMale": "M",
+    "ConvertCountOfChildren": "1",
+    "ListCard": [
+      {
+        "NumberCard": 4534542424231313,
+        "CardExpirationDate": "09/26",
+        "ConvertNumberCard": "4534 5424 2423 1313"
       }
     ]
   }
